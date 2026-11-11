@@ -33,6 +33,10 @@
   5. `a56bcea` — `docs: tambahkan link repository GitHub ke laporan`
   6. `da5b7af` — `feat: tambah konfigurasi Netlify dan identitas mahasiswa di laporan`
   7. `7c9729a` — `style: rapikan baris akhir berkas Netlify`
+  8. `3e51a1f` — `docs: perbarui daftar commit pada laporan`
+  9. `c64e246` — `feat: tambah konfigurasi deploy Vercel (api/products dan vercel.json)`
+  10. `93dabe0` — `fix: paksa Vercel memakai situs statis dan abaikan server.mjs`
+  11. `e736d70` — `chore: hapus konfigurasi Netlify, deploy memakai Vercel`
 - Hasil pemeriksaan `git status`: `On branch master — nothing to commit, working tree clean`
 
 ## E. Pemakaian kecerdasan buatan (jika digunakan)
