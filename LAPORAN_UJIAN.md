@@ -1,8 +1,8 @@
 # Laporan UTS Web Software Tools
 
-**Nama:**
-**Nomor Induk Mahasiswa:**
-**Kelas:**
+**Nama:** Abdullah Andrian Saputra
+**Nomor Induk Mahasiswa:** 1252301
+**Kelas:** Teknik Informatika
 **Tanggal:** 11 November 2026
 
 ## A. Bukti pemeriksaan masalah
