@@ -23,10 +23,13 @@
 - Hasil pemeriksaan ulang: Setelah perbaikan, `src/cart.js` tidak lagi memiliki variabel yang tidak terpakai; kode menggunakan sintaks modern ES module yang konsisten.
 
 ## D. Git
+- Repository GitHub: https://github.com/driannn04/wst-uts-mini-toko
 - Branch (jika membuat): Tidak membuat branch baru; semua perbaikan dilakukan pada branch `master`.
 - Ringkasan commit:
   1. `0294f2b` — `chore: initial exam project` *(snapshot kondisi awal project sebelum perbaikan)*
   2. `2366b76` — `fix: perbaiki tiga bug pada cart.js dan app.js` *(perbaikan endpoint API, selector tombol, dan perhitungan total)*
+  3. `75a9bf8` — `docs: lengkapi LAPORAN_UJIAN.md dengan semua temuan dan perbaikan`
+  4. `be707cd` — `style: format app.js dengan Biome dan tambahkan package-lock.json`
 - Hasil pemeriksaan `git status`: `On branch master — nothing to commit, working tree clean`
 
 ## E. Pemakaian kecerdasan buatan (jika digunakan)
