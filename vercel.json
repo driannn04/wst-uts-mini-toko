@@ -1,4 +1,5 @@
 {
+  "framework": null,
   "buildCommand": "mkdir -p public/src && cp src/cart.js public/src/cart.js",
   "outputDirectory": "public"
 }
