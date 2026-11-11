@@ -30,6 +30,9 @@
   2. `2366b76` — `fix: perbaiki tiga bug pada cart.js dan app.js` *(perbaikan endpoint API, selector tombol, dan perhitungan total)*
   3. `75a9bf8` — `docs: lengkapi LAPORAN_UJIAN.md dengan semua temuan dan perbaikan`
   4. `be707cd` — `style: format app.js dengan Biome dan tambahkan package-lock.json`
+  5. `a56bcea` — `docs: tambahkan link repository GitHub ke laporan`
+  6. `da5b7af` — `feat: tambah konfigurasi Netlify dan identitas mahasiswa di laporan`
+  7. `7c9729a` — `style: rapikan baris akhir berkas Netlify`
 - Hasil pemeriksaan `git status`: `On branch master — nothing to commit, working tree clean`
 
 ## E. Pemakaian kecerdasan buatan (jika digunakan)
