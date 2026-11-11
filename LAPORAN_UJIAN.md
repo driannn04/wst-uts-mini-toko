@@ -8,8 +8,8 @@
 ## A. Bukti pemeriksaan masalah
 | Masalah | Alat yang digunakan | Bukti pemeriksaan | Perkiraan penyebab | Perbaikan | Hasil setelah perbaikan |
 |---|---|---|---|---|---|
-| Produk tidak muncul di halaman | Browser DevTools (tab Network) | Request ke `/api/barang` mengembalikan status 404 | Endpoint yang dipanggil di `app.js` baris 48 adalah `/api/barang`, sedangkan server hanya mendaftarkan `/api/products` | Mengubah `fetch("/api/barang")` menjadi `fetch("/api/products")` di `public/app.js` | Produk berhasil tampil — status menjadi "4 produk tersedia" |
-| Tombol "+ Tambah ke Keranjang" tidak berfungsi | Browser DevTools (tab Console) + inspeksi kode | Klik tombol tidak memicu event apapun; `querySelectorAll(".add-to-cart")` mengembalikan NodeList kosong | Template HTML di `renderProducts()` memberi class `add-button` pada tombol, namun event listener dipasang pada selector `.add-to-cart` yang tidak ada | Mengubah `querySelectorAll(".add-to-cart")` menjadi `querySelectorAll(".add-button")` di `public/app.js` baris 27 | Tombol berhasil menambahkan produk ke keranjang |
+| Produk tidak muncul di halaman | Inspeksi kode `public/app.js` + permintaan HTTP ke server lokal (`npm run dev`) | Kode awal memanggil `fetch("/api/barang")`; permintaan `GET /api/barang` ke server lokal menghasilkan status **404**, sedangkan `GET /api/products` menghasilkan **200** | Endpoint yang dipanggil di `app.js` (`/api/barang`) tidak sama dengan endpoint yang didaftarkan di `server.mjs` (`/api/products`) | Mengubah `fetch("/api/barang")` menjadi `fetch("/api/products")` di `public/app.js` | Permintaan sekarang mengarah ke endpoint yang mengembalikan 200 dengan 4 produk |
+| Tombol "+ Tambah ke Keranjang" tidak berfungsi | Inspeksi kode `public/app.js` | Template di `renderProducts()` membuat tombol dengan class `add-button`, tetapi event listener dipasang dengan `querySelectorAll(".add-to-cart")` yang tidak cocok dengan elemen apa pun | Nama class pada selector berbeda dengan class tombol yang dibuat, sehingga listener tidak pernah terpasang | Mengubah selector menjadi `querySelectorAll(".add-button")` di `public/app.js` | Selector kini cocok dengan tombol yang dibuat sehingga listener terpasang |
 | Total belanja tidak sesuai (tidak kalikan quantity) | `npm run test:once` | 2 dari 7 tes gagal: "satu jenis barang dengan jumlah dua" (75000 ≠ 150000) dan "dua jenis barang dengan jumlah berbeda" (225000 ≠ 600000) | Fungsi `calculateTotal` di `src/cart.js` menjumlahkan `item.price` saja tanpa mengalikan `item.quantity`; juga terdapat variabel `discount` yang dideklarasikan tapi tidak pernah dipakai | Mengubah `item.price` menjadi `item.price * item.quantity` dan menghapus deklarasi `var discount` yang tidak terpakai | Semua 7 tes lulus (pass 7/7) |
 
 ## B. Hasil pengujian
@@ -40,10 +40,10 @@
 - Hasil pemeriksaan `git status`: `On branch master — nothing to commit, working tree clean`
 
 ## E. Pemakaian kecerdasan buatan (jika digunakan)
-- Nama alat: Antigravity (Google DeepMind) dengan model Claude Sonnet 4.6 Thinking
+- Nama alat: Antigravity (asisten AI pemrograman)
 - Pertanyaan/instruksi yang diberikan: "Tolong bantu saya mengerjakan UTS project, pahami dulu ketentuan soalnya lalu kerjakan project-nya."
-- Bagian jawaban yang diterapkan: Identifikasi tiga bug (endpoint salah, selector salah, logika total salah) beserta lokasi baris kode persisnya; penerapan perbaikan pada `src/cart.js` dan `public/app.js`; inisialisasi Git dan penulisan commit message.
-- Cara memeriksa apakah saran tersebut benar: Menjalankan `npm run test:once` — dari 2 tes gagal menjadi 7/7 lulus; membuka aplikasi di browser dan mengklik tombol "+ Tambah ke Keranjang" — produk berhasil masuk keranjang dan total dihitung dengan benar.
+- Bagian jawaban yang diterapkan: Identifikasi tiga bug (endpoint salah, selector salah, logika total salah) beserta lokasi baris kode persisnya; penerapan perbaikan pada `src/cart.js` dan `public/app.js`; inisialisasi Git dan penulisan commit message; konfigurasi deploy Vercel.
+- Cara memeriksa apakah saran tersebut benar: Menjalankan `npm run test:once` (dari 5 lulus/2 gagal menjadi 7/7 lulus), menjalankan `npm run quality:check` (bersih), dan meminta `/api/barang` serta `/api/products` ke server lokal (404 berbanding 200). Pemeriksaan di browser perlu dilakukan sendiri oleh mahasiswa.
 
 ## F. Refleksi singkat
 - Satu pelajaran paling penting dari ujian ini: Bug kecil seperti nama selector yang tidak cocok (`.add-to-cart` vs `.add-button`) atau lupa mengalikan kuantitas (`price` vs `price * quantity`) bisa membuat seluruh fitur tidak berfungsi. Alat pengujian otomatis dan browser DevTools sangat membantu menemukan akar masalah dengan cepat sebelum mencoba memperbaikinya secara spekulatif.
