@@ -24,7 +24,7 @@ function renderProducts() {
       <button class="add-button" data-id="${product.id}" type="button">+ Tambah ke Keranjang</button>
     </article>
   `).join("");
-  document.querySelectorAll(".add-to-cart").forEach((button) => {
+  document.querySelectorAll(".add-button").forEach((button) => {
     button.addEventListener("click", () => {
       const product = products.find((item) => item.id === Number(button.dataset.id));
       if (product) {
@@ -45,7 +45,7 @@ function renderCart() {
 
 async function loadProducts() {
   try {
-    const response = await fetch("/api/barang");
+    const response = await fetch("/api/products");
     if (!response.ok) throw new Error(`Permintaan gagal dengan status ${response.status}`);
     products = await response.json();
     productStatus.textContent = `${products.length} produk tersedia`;
